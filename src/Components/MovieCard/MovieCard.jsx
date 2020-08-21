@@ -4,12 +4,15 @@ import styles from "./MovieCard.module.css"
 import copies from "./copies";
 import {genresIDs} from "../../utils/constants";
 import Star from  "./Assets/Star"
+import useObserver from "../../utils/useObserver";
+import {classes} from "../../utils/format";
+import placeholder from "./Assets/placeholder.png"
 
 
 const MovieCard = (
     {
       movieId,
-       image,
+       imageURL,
        title,
        date,
        genres,
@@ -17,17 +20,42 @@ const MovieCard = (
        home,
        addToWatchList,
        watchList,
-       removeFromWatchList}
+       removeFromWatchList,
+        id,
+        ref
+    }
 
        ) => {
 
   const [status,setStatus] =  useState(false);
+  const [image, setImage] = useState(imageURL)
 
 
   useEffect(()=>{
     setStatus(getStatus())
-    console.log(getStatus(), movieId, "soy el estadoooo")
   },[watchList])
+
+  const [observer, setElements, entries] = useObserver({
+    threshold: 0.25,
+    root: null
+  });
+
+
+  useEffect(() => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const lazyImage = entry.target;
+        lazyImage.src = lazyImage.dataset.src;
+        lazyImage.classList.remove("lazy");
+        observer.unobserve(lazyImage);
+      }
+    });
+  }, [entries, observer]);
+
+  useEffect(() => {
+    const images = document.querySelectorAll(".lazy");
+    setElements(images);
+  }, [setElements]);
 
   const getGenres = () =>{
     return genresIDs.filter(genre =>
@@ -46,11 +74,11 @@ const MovieCard = (
 
 
   return (
-      <div className={styles.mainContainer}>
+      <div className={styles.mainContainer} id={id}  ref={ref}>
        <div
            className={styles.poster}
-           style={{ backgroundImage: `url(http://image.tmdb.org/t/p/original/${image})` }}
        >
+         <img className={classes(styles.posterImage, "lazy")} data-src={`http://image.tmdb.org/t/p/original/${image}` } src={placeholder} />
          <div className={styles.rateContainer}>
            <div>
            <Star/>
@@ -90,7 +118,7 @@ const MovieCard = (
           </div>
             <div className={styles.genresContainer}>
               {getGenres().map(genre =>
-                <span>{genre.name} </span>
+                <span key={genre.id}>{genre.name} </span>
             )}</div>
 
         </div>
@@ -101,10 +129,14 @@ MovieCard.propTypes = {
   image: string,
   title: string,
   year: number,
-  genres: arrayOf(string),
+  genres: arrayOf(number),
   rate: number,
   status: bool,
   addToWatchList: func
 };
-MovieCard.defaultProps = {};
+MovieCard.defaultProps = {
+  removeFromWatchList: ()=>{},
+  addToWatchList: () =>{},
+
+};
 export default MovieCard;

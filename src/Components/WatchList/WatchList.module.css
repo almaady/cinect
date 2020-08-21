@@ -1,0 +1,13 @@
+.watchListContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 85%;
+    margin: auto;
+}
+
+.mainContainer{
+    width: 100%;
+    padding: 3rem 0;
+
+}

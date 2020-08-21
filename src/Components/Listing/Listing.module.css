@@ -8,5 +8,32 @@
 
 .mainContainer{
     width: 100%;
+    padding: 3rem 0;
 
+}
+
+
+.button{
+    background-color: #f9f9fd;
+    border: solid 1px #657BAB;
+    width: 30rem;
+    color: #657BAB;
+    font-size: 1.3rem;
+    padding: 1rem ;
+    border-radius: .25rem;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.button:hover{
+    color: #f9f9fd;
+    background-color:#657BAB;
+}
+
+.button p {
+    margin: 0;
+}
+
+.button svg{
+    height: 4rem;
+    fill: #657BAB;
 }

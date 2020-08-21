@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from "react";
-import {number, string, func} from "prop-types";
+import { bool} from "prop-types";
 import MovieCard from "../MovieCard/MovieCard";
 import movieApiInstance from"../../utils/movieAPIInstance"
-import {genresIDs, TOP_RATED} from "../../utils/constants";
-import getConfig from "next/config";
+import {TOP_RATED} from "../../utils/constants";
+import getConfig from "next/config"
 import styles from "./Listing.module.css"
+import Loading from "./Assets/Loading";
 
 const { publicRuntimeConfig } = getConfig();
 const {
@@ -13,67 +14,97 @@ const {
 
 
 const Listing = ({home}) => {
-  const[movieList, setMovieList] = useState([])
+  const[movieList, setMovieList] = useState([]);
 
 
 
-  useEffect(()=>{
-    const  prevWatchList = JSON.parse(localStorage.getItem('watchList')) || [];
-    setWatchList(prevWatchList)
-    console.log(prevWatchList)
-  },[]);
-
-  useEffect(()=>{
-    if(home){
-      getMovies(1)
-    }else{
-      setMovieList(watchList)
+  const getPrevWatchList = async () =>{
+    const  prevWatchList = await JSON.parse(localStorage.getItem("watchList")) || [];
+    try{
+      setWatchList(prevWatchList)
+    }catch(e){
+      console.log(e)
     }
-  }, []);
+
+  };
+
+  const [watchList, setWatchList]  = useState ([]);
+  const [isLoading, setIsLoading]= useState(false);
+  const[currentPage, setCurrentPage]  = useState(1);
 
 
-  const [watchList, setWatchList]  = useState ([])
-  const[currentPage, setCurrentPage]  = useState(1)
+  const  getInitialMovies = async page => {
+    const  savedMovieList = await localStorage.getItem("movieList") ;
+    console.log(savedMovieList);
+    const  actualPage = await JSON.parse(localStorage.getItem("currentPage")) || [1];
+    if(savedMovieList){
+      setMovieList(savedMovieList)
+    }else{
+      getMovies(1)
+    }
 
-  const  getMovies = async page => {
-    console.log(movieApiInstance())
+  };
+
+  const getMovies = async(page)=>{
     try {
-      const response = await movieApiInstance().get(TOP_RATED(1,  MOVIE_API_KEY));
-      setMovieList(response.data.results)
+      const response = await movieApiInstance().get(TOP_RATED(page,  MOVIE_API_KEY));
+      setIsLoading(false);
+      const newList = movieList.concat(response.data.results);
+      setMovieList(newList);
+      localStorage.setItem("movieList", JSON.parse(newList))
     }
     catch (e) {
       console.warn(e)
     }
-  }
+  };
+
+  useEffect(()=>{
+      getInitialMovies();
+      getPrevWatchList();
+  }, []);
 
   return (
       <div className={styles.mainContainer}>
       <div className={styles.listingContainer}>
-        {movieList.map((movie)=>(
+        {movieList.map((movie, index)=>{
+            return(
             <MovieCard
+                id={index}
                 title={movie.title}
-                image={movie.poster_path}
+                key={`${movie.id}-${index}`}
+                imageURL={movie.poster_path}
                 genres={movie.genre_ids}
                 date={movie.release_date}
                 rate={movie.vote_average}
                 movieId={movie.id}
                 addToWatchList={()=>{
-                  const newList = watchList.concat(movie)
-                  setWatchList(newList)
+                  const newList = watchList.concat(movie);
+                  setWatchList(newList);
                   localStorage.setItem("watchList", JSON.stringify(newList))
                 }}
                 watchList={watchList}
                 home={home}
             />
-        ))}
+        )})}
       </div>
-        {home &&
-        <button>
-          <p>AAAAH</p>
-        </button>}
+        <button className={styles.button}
+          onClick={()=>{
+            setIsLoading(true)
+            const newPage = currentPage + 1
+            console.log(newPage)
+            setCurrentPage(newPage)
+              getMovies(newPage)
+          }}
+        >
+          {isLoading ? <Loading/>: <p>Load more ...</p>}
+        </button>
       </div>
   );
 };
-Listing.propTypes = {};
-Listing.defaultProps = {};
+Listing.propTypes = {
+  home: bool
+};
+Listing.defaultProps = {
+  home: false
+};
 export default Listing;
