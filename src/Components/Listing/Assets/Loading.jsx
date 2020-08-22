@@ -6,7 +6,7 @@ export default function SvgComponent() {
 
       <svg version="1.1" id="L5" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
            viewBox="0 0 120 100" enable-background="new 0 0 0 0" >
-  <circle fill="#657BAB" stroke="none" cx="20" cy="50" r="10">
+  <circle fill="#FFFFFF" stroke="none" cx="20" cy="50" r="10">
     <animateTransform
         attributeName="transform"
         dur="1s"
@@ -15,7 +15,7 @@ export default function SvgComponent() {
         repeatCount="indefinite"
         begin="0.1"/>
   </circle>
-        <circle fill="#657BAB" stroke="none" cx="60" cy="50" r="10">
+        <circle fill="#FFFFFF" stroke="none" cx="60" cy="50" r="10">
     <animateTransform
         attributeName="transform"
         dur="1s"
@@ -24,7 +24,7 @@ export default function SvgComponent() {
         repeatCount="indefinite"
         begin="0.2"/>
   </circle>
-        <circle fill="#657BAB" stroke="none" cx="100" cy="50" r="10">
+        <circle fill="#FFFFFF" stroke="none" cx="100" cy="50" r="10">
     <animateTransform
         attributeName="transform"
         dur="1s"

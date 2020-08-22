@@ -1,0 +1,312 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;900&display=swap');
+
+
+.mainContainer{
+    padding: 0;
+    width: 100vw;
+    font-family: 'Nunito', sans-serif;
+    box-sizing: border-box;
+}
+
+
+.cover{
+    width: 100%;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.posterImage{
+    width:100%;
+    position: absolute;
+    left: 0;
+    background-position: center;
+    background-size: cover;
+    height: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.contentContainer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 4;
+    box-shadow: 0 3px 3px -1px rgba(90, 90, 90, 0.2), 0 -12px 20px -10px rgba(0, 0, 0, 0.2),
+    0 -1px 1px rgba(0,0,0,0.08),
+    0 -2px 2px rgba(0,0,0,0.08),
+    0 -4px 4px rgba(0,0,0,0.08),
+    0 -6px 8px rgba(0,0,0,0.08),
+    0 -8px 16px rgba(0,0,0,0.08);
+    border-radius: .8rem .8rem 0 0;
+    background-color: #ffffff;
+    padding: .8rem;
+    left:0;
+}
+
+
+.titleContainer{
+
+}
+
+.title{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.title h1{
+    width: 70%;
+    margin: .5rem 0;
+}
+.title span {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 1.5rem;
+}
+
+.title span p{
+    font-size: 2rem;
+    margin: 0 .5rem;
+}
+
+.titleContainer p{
+    margin: .5rem 0;
+}
+
+.specs {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.status{
+    position: fixed;
+    top: 5.5rem;
+    z-index: 1;
+    right: 1rem;
+    background-color: #C6E8C5;
+    color: #31752F;
+    padding: .25rem .5rem;
+    border-radius: .25rem;
+}
+
+.addButton {
+    background-color: white;
+    color: #212529;
+    padding: .25rem .5rem;
+    border:solid 1px #176ADE;
+    width: 100%;
+    padding: 1rem;
+    margin: 0 0 .750rem;
+    font-size: 1rem;
+    border-radius: .25rem;
+    box-shadow: 0 3px 3px -1px rgba(90, 90, 90, 0.2), 0 3px 3px -1px rgba(90, 90, 90, 0.2);
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+}
+
+.removeButton{
+    background-color: white;
+    color: #D72A1D;
+    padding: 1rem;
+    border:solid 1px #D72A1D;
+    font-size: 1rem;
+    border-radius: .25rem;
+    box-shadow: 0 3px 3px -1px rgba(90, 90, 90, 0.2), 0 3px 3px -1px rgba(90, 90, 90, 0.2);
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+    width: 100%;
+}
+
+.removeButton:hover{
+    transition: all .15s ease;
+    color: white;
+    background-color: #D72A1D;
+    box-shadow: 0 2px 1px rgba(0,0,0,0.09),
+    0 1px 1px rgba(0,0,0,0.11),
+    0 2px 2px rgba(0,0,0,0.11),
+    0 4px 4px rgba(0,0,0,0.11),
+    0 6px 8px rgba(0,0,0,0.11),
+    0 8px 16px rgba(0,0,0,0.11);
+}
+
+
+.summary {
+    max-height: 4.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: .9rem;
+}
+
+.closeButton{
+    position: fixed;
+    background-color: transparent;
+    right: 0;
+    top: 1rem;
+    border: none;
+}
+
+.closeButton svg  {
+    height: 2rem;
+    width: 2rem;
+    fill: #015de1;
+}
+
+.contentOpen {
+    height: 100%;
+    z-index: 7;
+    padding: 3rem .5rem;
+    border-radius: 0;
+}
+
+.moreInfoContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.moreInfoContainer button{
+    background-color: white;
+    border: none;
+    border-bottom: solid 1px #015de1;
+    padding: .25rem .5rem;
+    color: #015de1;
+ }
+
+
+
+.contentOpen .summary{
+  min-height: 5rem;
+    max-height: 40rem;
+    overflow: auto;
+}
+
+.tagLine{
+    display: none;
+}
+
+.contentOpen .tagLine{
+    display: block;
+    font-weight: bold;
+}
+
+
+.genresContainer{
+    height: fit-content;
+    display: none;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin: 1rem 0;
+    max-height: 5rem;
+    overflow: scroll;
+}
+
+.genresContainer span{
+    font-size: 1rem;
+    margin: .25rem;
+    padding: .1rem .5rem;
+    background-color:#ECF3FD;
+    color: #176ADE;
+    border-radius:.25rem;
+}
+
+.contentOpen .genresContainer{
+    display: flex;
+}
+
+
+.genresTitle{
+    display: none;
+}
+.contentOpen .genresTitle{
+    display: block;
+}
+
+.production {
+    display: none;
+}
+
+.contentOpen .production{
+    display: block;
+}
+
+.contentOpen .addButton{
+    position: fixed;
+    bottom: 0;
+    left: 2%;
+    width: 96%;
+}
+
+.contentOpen .removeButton{
+    position: fixed;
+    bottom: 0;
+    left: 2%;
+    width: 96%;
+}
+@media(min-width: 768px){
+    .mainContainer{
+        padding: 4rem 2rem;
+        overflow: hidden;
+        width: 99vw;
+    }
+
+    .posterImage{
+        left: 0;
+        top:0;
+        height: 100vh;
+        width: 50%;
+    }
+
+    .contentContainer{
+        left: 100%;
+        transform: translate(-100%,0);
+        width: 50%;
+        padding: 4rem;
+        height: 100%;
+        z-index: 1;
+        border-radius: .8rem .8rem .5rem .5rem;
+        border-top-right-radius:0;
+        -moz-border-radius-topright: 0;
+    }
+
+    .status{
+        left: 2%;
+        right: 90%;
+        width: fit-content;
+    }
+
+    .summary{
+        max-height: 100rem;
+    }
+
+    .moreInfoContainer button{
+        display: none;
+    }
+
+    .tagLine{
+        display: block;
+    }
+
+    .genresContainer{
+        display: flex;
+    }
+    .genresTitle{
+        display: block;
+    }
+
+    .production {
+        display: block;
+    }
+
+    .addButton{
+        margin-top: 3rem;
+    }
+
+    .removeButton{
+        margin-top: 3rems;
+    }
+}

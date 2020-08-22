@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;900&display=swap');
 .watchListContainer{
     display: flex;
     flex-direction: column;
@@ -11,11 +12,44 @@
     width: 99vw;
     padding: 4rem 0;
     box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
 
 }
 
+.mainContainer h2{
+    color: #015DE1;
+    margin-left: 2rem;
+}
 
 
+.emptyContainer{
+    background-color: #d2dffb;
+    box-sizing: border-box;
+    border-radius: .5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    width: 90%;
+}
+
+.emptyContainer h1{
+    font-size: 3rem;
+}
+
+.emptyContainer h3{
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.emptyContainer a{
+    background-color: #819ACF;
+    color: #FFFFFF;
+    padding: 1rem 3rem;
+    text-decoration: none;
+    border-radius: .5rem;
+    box-shadow: 0 3px 3px -1px rgba(90, 90, 90, 0.2), 0 3px 3px -1px rgba(90, 90, 90, 0.2);
+}
 @media (min-width: 768px ) {
     .watchListContainer{
         flex-direction: row;
@@ -25,4 +59,9 @@
     .mainContainer{
         padding: 3rem 0;
     }
+
+    .emptyContainer{
+        width: 40%;
+    }
+
 }

@@ -6,7 +6,7 @@ const {
   MOVIE_API_URL,
 } = publicRuntimeConfig;
 
-const instance = url => axios.create({
+const instance = () => axios.create({
   baseURL: `${MOVIE_API_URL}`,
   headers: {
     "Content-Type": "application/json",

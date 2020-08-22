@@ -1,14 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;900&display=swap');
+
 .listingContainer{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    box-sizing: border-box;
 }
 
 .mainContainer{
-    width: 100vw;
     padding: 4rem 0;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
 
 }
 
@@ -16,14 +22,15 @@
 .button{
     background-color: #f9f9fd;
     border: solid 1px #657BAB;
-    width: 90%;
+    width: 50%;
     box-sizing: border-box;
     color: #657BAB;
     font-size: 1.3rem;
     padding: 1rem ;
     border-radius: .25rem;
-    margin: 1rem 4%;
-    font-family: 'Source Sans Pro', sans-serif;
+    margin: 1rem auto;
+    font-family: 'Nunito', sans-serif;
+    box-sizing: border-box;
 }
 
 .button:hover{
@@ -40,6 +47,14 @@
     fill: #657BAB;
 }
 
+
+.mainContainer h3{
+    font-family: 'Nunito', sans-serif;
+    width: 80%;
+    text-align: left;
+    font-size: 1.5rem;
+    color: #015de1;
+}
 
 @media (min-width: 768px ) {
     .listingContainer{

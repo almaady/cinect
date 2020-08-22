@@ -1,4 +1,5 @@
 export const TOP_RATED = (body, apiKey) => `3/movie/top_rated?api_key=${apiKey}&page=${body}`;
+export const MOVIE_DETAIL = (body, apiKey) => `3/movie/${body}?api_key=${apiKey}`;
 
 export const genresIDs = [
   {
