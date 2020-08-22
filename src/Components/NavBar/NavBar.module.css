@@ -79,7 +79,7 @@
 
     .linksContainer{
         display: block;
-        width: 25%;
+        min-width: 25%;
     }
     .navBarContainer a{
         font-size: 1.5rem;

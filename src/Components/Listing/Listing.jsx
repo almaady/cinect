@@ -6,6 +6,7 @@ import {TOP_RATED} from "../../utils/constants";
 import getConfig from "next/config"
 import styles from "./Listing.module.css"
 import Loading from "./Assets/Loading";
+import copies from "./copies";
 
 const { publicRuntimeConfig } = getConfig();
 const {
@@ -34,9 +35,10 @@ const Listing = () => {
 
   const  getInitialMovies = async page => {
     const  savedMovieList = await  JSON.parse(localStorage.getItem("movieList"));
-    const  actualPage = await JSON.parse(localStorage.getItem("currentPage")) ;
-    setCurrentPage(actualPage)
+    const  actualPage = await localStorage.getItem("actualPage") ;
+
     if(savedMovieList){
+      setCurrentPage(parseInt(actualPage))
       setMovieList(savedMovieList)
     }else{
       getMovies(1)
@@ -65,6 +67,7 @@ const Listing = () => {
 
   return (
       <div className={styles.mainContainer}>
+        <h3>{copies.now_playing} 🎞 </h3>
       <div className={styles.listingContainer}>
         {movieList.map((movie, index)=>{
             return(
@@ -91,10 +94,11 @@ const Listing = () => {
             setIsLoading(true)
             const newPage = currentPage + 1
             setCurrentPage(newPage)
-              getMovies(newPage)
+              getMovies(newPage )
+
           }}
         >
-          {isLoading ? <Loading/>: <p>Load more ...</p>}
+          {isLoading ? <Loading/>: <p>{copies.load_more}</p>}
         </button>
       </div>
   );
