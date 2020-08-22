@@ -17,13 +17,12 @@ const Listing = () => {
   const[movieList, setMovieList] = useState([]);
 
 
-
   const getPrevWatchList = async () =>{
     const  prevWatchList = await JSON.parse(localStorage.getItem("watchList")) || [];
     try{
       setWatchList(prevWatchList)
     }catch(e){
-      console.log(e)
+      console.warn(e)
     }
 
   };
@@ -34,10 +33,9 @@ const Listing = () => {
 
 
   const  getInitialMovies = async page => {
-    const  savedMovieList = await  JSON.parse(localStorage.getItem("movieList")) ;
-    console.log(savedMovieList);
+    const  savedMovieList = await  JSON.parse(localStorage.getItem("movieList"));
     const  actualPage = await JSON.parse(localStorage.getItem("currentPage")) ;
-    console.log(actualPage)
+    setCurrentPage(actualPage)
     if(savedMovieList){
       setMovieList(savedMovieList)
     }else{
@@ -50,7 +48,6 @@ const Listing = () => {
     try {
       const response = await movieApiInstance().get(TOP_RATED(page,  MOVIE_API_KEY));
       setIsLoading(false);
-      console.log("response", response)
       const newList = movieList.concat(response.data.results);
       setMovieList(newList);
       localStorage.setItem("actualPage", page)
@@ -93,7 +90,6 @@ const Listing = () => {
           onClick={()=>{
             setIsLoading(true)
             const newPage = currentPage + 1
-            console.log(newPage)
             setCurrentPage(newPage)
               getMovies(newPage)
           }}

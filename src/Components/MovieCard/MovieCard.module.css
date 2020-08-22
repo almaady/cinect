@@ -21,7 +21,6 @@
     height: 80%;
     border-radius: .5rem  .5rem 0 0;
     background-size: cover;
-    position: relative;
     overflow: hidden;
 }
 
@@ -31,6 +30,7 @@
 
 .poster img{
     object-position: center;
+    border-radius: .5rem;
 }
 
 .poster  img svg{
@@ -245,6 +245,10 @@
 
     .addButton{
         font-size: .75rem;
+    }
+
+    .genresContainer{
+        max-height: 3.5rem;
     }
 
     .genresContainer span{

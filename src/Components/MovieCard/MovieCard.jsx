@@ -55,9 +55,8 @@ const MovieCard = (
   }, [setElements]);
 
   const getGenres = () =>{
-    return genresIDs.filter(genre =>
-       genres.indexOf(genre.id) !== -1
-    )
+      return genresIDs.filter(genre =>
+          genres.indexOf(genre.id) !== -1)
   };
 
   const getStatus = ()=>{
@@ -71,16 +70,17 @@ const MovieCard = (
 
 
   return (
-      <a className={styles.mainContainer} href={`/detail/${movieId}`}>
-       <div
+      <div className={styles.mainContainer} >
+       <a
            className={styles.poster}
+           href={`/movie-detail?k=${movieId}`}
        >
          <img className={classes(styles.posterImage, "lazy")} data-src={`http://image.tmdb.org/t/p/original/${image}` } src={placeholder} />
          <div className={styles.rate}>
            <p>{getYear()}</p>
 
          </div>
-       </div>
+       </a>
         <div className={styles.yearContainer}>
           <div className={styles.year}>
           <span>
@@ -119,7 +119,7 @@ const MovieCard = (
                 <span key={genre.id}>{genre.name}</span>
             )}</div>
         </div>
-      </a>
+      </div>
   );
 };
 MovieCard.propTypes = {

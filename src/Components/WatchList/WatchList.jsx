@@ -1,18 +1,18 @@
 import React, {useState, useEffect} from "react";
-import {number, string, func, arrayOf, shape} from "prop-types";
+import {arrayOf} from "prop-types";
 import styles from "./WatchList.module.css"
 import MovieCard from "../MovieCard/MovieCard";
 
 
 const WatchList = ({}) => {
   const [moviesList, setMoviesList] = useState([]);
+  const [test, setTest] = useState(0)
   const getPrevWatchList = async () =>{
     const  prevWatchList = await JSON.parse(localStorage.getItem("watchList")) || [];
     try{
-      console.log(prevWatchList)
       setMoviesList(prevWatchList)
     }catch(e){
-      console.log(e)
+      console.warn(e)
     }
 
   }
@@ -26,12 +26,11 @@ const WatchList = ({}) => {
       <div className={styles.mainContainer}>
         <div className={styles.watchListContainer}>
           {moviesList.map((movie, index)=>{
-            console.log(movie)
             return(
                 <MovieCard
                     id={index}
                     title={movie.title}
-                    key={`${movie.id}-${index}`}
+                    key={`${movie.id}-${index}x`}
                     imageURL={movie.poster_path}
                     genres={movie.genre_ids}
                     date={movie.release_date}
@@ -40,12 +39,13 @@ const WatchList = ({}) => {
                     watchList={moviesList}
                     removeFromWatchList={()=>{
                       const movieIndex =  moviesList.findIndex( m  => m.id === movie.id )
-                      const newList = moviesList
-                      newList.splice(movieIndex, 1)
-                      console.log(newList)
-                      setMoviesList(newList)
+                      const newList = moviesList;
+                      newList.splice(movieIndex, 1);
+                      setMoviesList(newList);
+                      setTest(movieIndex);
                       localStorage.setItem("watchList", JSON.stringify(newList))
-                      console.log("existooo", newList)
+                      return newList
+
                     }}
                 />
             )})}
