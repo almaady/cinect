@@ -62,7 +62,6 @@ describe("MovieCard", () => {
     const component = shallow(<MovieCard {...props}/>);
     const genresContainer = component.find("#genresContainer")
     const genresList = genresContainer.find("span").map((node)=> node.text())
-    console.log(genresList)
     expect(genresList).toEqual(["Action","Animation" ])
   })
 
