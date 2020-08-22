@@ -10,18 +10,26 @@
     "next": "^9.5.2",
     "next-compose-plugins": "^2.2.0",
     "next-images": "^1.4.1",
+    "prettier": "^2.0.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.3"
+    "react-scripts": "3.4.3",
+    "sinon": "^9.0.3"
   },
   "scripts": {
     "start": "next start",
     "dev": "next dev -p 8080",
     "build": "next build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --no-cache",
     "eject": "react-scripts eject",
     "lint:js": "eslint --ext .jsx --ext .js src",
     "lint:js:fix": "eslint --fix --ext .jsx --ext .js src"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|less)$": "identity-obj-proxy"
+    }
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -39,12 +47,16 @@
     ]
   },
   "devDependencies": {
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.3",
     "eslint": "^7.2.0",
     "eslint-config-airbnb": "18.2.0",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-jsx-a11y": "^6.3.0",
     "eslint-plugin-react": "^7.20.0",
-    "eslint-plugin-react-hooks": "4.0.0"
+    "eslint-plugin-react-hooks": "4.0.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^26.4.1"
   }
 }

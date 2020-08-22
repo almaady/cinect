@@ -49,6 +49,7 @@ const Listing = ({home}) => {
     try {
       const response = await movieApiInstance().get(TOP_RATED(page,  MOVIE_API_KEY));
       setIsLoading(false);
+      console.log("response", response)
       const newList = movieList.concat(response.data.results);
       setMovieList(newList);
       localStorage.setItem("movieList", JSON.parse(newList))
@@ -69,7 +70,6 @@ const Listing = ({home}) => {
         {movieList.map((movie, index)=>{
             return(
             <MovieCard
-                id={index}
                 title={movie.title}
                 key={`${movie.id}-${index}`}
                 imageURL={movie.poster_path}
@@ -83,7 +83,6 @@ const Listing = ({home}) => {
                   localStorage.setItem("watchList", JSON.stringify(newList))
                 }}
                 watchList={watchList}
-                home={home}
             />
         )})}
       </div>

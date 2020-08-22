@@ -9,10 +9,10 @@ import WatchList from "../../Components/WatchList/WatchList";
 const WatchListContainer = ({currentUrl}) => {
 
   return (
-      <div>
+      <>
         <NavBar/>
         <WatchList/>
-      </div>
+      </>
   );
 };
 WatchListContainer.propTypes = {
