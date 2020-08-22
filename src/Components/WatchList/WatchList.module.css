@@ -1,13 +1,28 @@
 .watchListContainer{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
-    width: 85%;
-    margin: auto;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
 }
 
 .mainContainer{
-    width: 100%;
-    padding: 3rem 0;
+    width: 99vw;
+    padding: 4rem 0;
+    box-sizing: border-box;
 
+}
+
+
+
+@media (min-width: 768px ) {
+    .watchListContainer{
+        flex-direction: row;
+        width: 99%;
+    }
+
+    .mainContainer{
+        padding: 3rem 0;
+    }
 }

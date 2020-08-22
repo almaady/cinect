@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;900&display=swap');
+
 .mainContainer{
     color: #212529;
     text-decoration: none;
@@ -5,11 +7,12 @@
     border: 1px solid #e9ecef;
     border-radius: .5rem;
     transition: transform .15s ease,box-shadow .15s ease,-webkit-transform .15s ease,-webkit-box-shadow .15s ease;
-    width: 20rem;
-    height: 30rem;
+    width: 90%;
+    box-sizing: border-box;
+    height: 40rem;
     position: relative;
-    font-family: 'Source Sans Pro', sans-serif;
-    margin: 1rem;
+    font-family: 'Nunito', sans-serif;
+    margin: 1rem 0;
 }
 
 
@@ -36,12 +39,13 @@
 
 .content {
     padding: 1rem;
-    min-height: 6.5rem;
+    min-height: 9rem;
     border-radius: .8rem .8rem .5rem .5rem;
     background-color: #ffffff;
     position: absolute;
     bottom: 0;
-    width: 18rem;
+    width: 100%;
+    box-sizing: border-box;
     z-index: 4;
     box-shadow: 0 3px 3px -1px rgba(90, 90, 90, 0.2), 0 -12px 20px -10px rgba(0, 0, 0, 0.2),
     0 -1px 1px rgba(0,0,0,0.08),
@@ -60,6 +64,7 @@
     overflow: hidden;
     white-space: nowrap;
     margin: 0 0 .5rem;
+    font-family: 'Nunito', sans-serif;
 }
 
 .yearContainer{
@@ -68,23 +73,25 @@
     align-items: flex-start;
     justify-content: space-between;
     color: #ffffff;
+    font-weight: 700;
 }
 
 .year p {
     font-size: 1.5rem;
-    font-weight: 500;
+    font-weight: 700;
     margin: 0 .5rem;
+    letter-spacing: 0.1em;
 
 }
 
 .yearContainer{
     position: absolute;
     right: 0;
-    bottom: 7.9rem;
+    bottom: 8rem;
     background: rgb(62,163,231);
     background: linear-gradient(285deg, rgba(62,163,231,1) 0%, rgba(15,83,185,1) 100%);
-    height: 3.5rem;
-    border-radius: .5rem .5rem 0 0;
+    height: 5rem;
+    border-radius: .8rem .8rem 0 0;
     z-index: 2;
     width: 100%;
     display: flex;
@@ -154,10 +161,12 @@
     flex-wrap: wrap;
     justify-content: flex-start;
     margin-top: .5rem;
+    max-height: 5rem;
+    overflow: scroll;
 }
 
 .genresContainer span{
-    font-size: .75rem;
+    font-size: 1rem;
     margin: .25rem;
     padding: .1rem .5rem;
     background-color:#ECF3FD;
@@ -180,10 +189,11 @@
     color: #212529;
     padding: .25rem .5rem;
     border:none;
-    font-size: .75rem;
+    font-size: 1rem;
     border-radius: .25rem;
     box-shadow: 0 3px 3px -1px rgba(90, 90, 90, 0.2), 0 3px 3px -1px rgba(90, 90, 90, 0.2);
     box-sizing: content-box;
+    font-family: 'Nunito', sans-serif;
 }
 
 .addButton:hover {
@@ -204,6 +214,7 @@
     border-radius: .25rem;
     box-shadow: 0 3px 3px -1px rgba(90, 90, 90, 0.2), 0 3px 3px -1px rgba(90, 90, 90, 0.2);
     box-sizing: content-box;
+    font-family: 'Nunito', sans-serif;
 }
 
 .removeButton:hover{
@@ -216,4 +227,66 @@
     0 4px 4px rgba(0,0,0,0.11),
     0 6px 8px rgba(0,0,0,0.11),
     0 8px 16px rgba(0,0,0,0.11);
+}
+
+
+@media (min-width: 768px) {
+    .mainContainer{
+        color: #212529;
+        text-decoration: none;
+        background-color: #ffffff;
+        border: 1px solid #e9ecef;
+        border-radius: .5rem;
+        transition: transform .15s ease,box-shadow .15s ease,-webkit-transform .15s ease,-webkit-box-shadow .15s ease;
+        width: 20rem;
+        box-sizing: border-box;
+        height: 30rem;
+        position: relative;
+        font-family: 'Source Sans Pro', sans-serif;
+        margin: 1rem;
+    }
+
+    .yearContainer{
+        bottom: 7.2rem;
+        height: 3.5rem;
+    }
+
+    .addButton{
+        background-color: white;
+        color: #212529;
+        padding: .25rem .5rem;
+        border:none;
+        font-size: .75rem;
+        border-radius: .25rem;
+        box-shadow: 0 3px 3px -1px rgba(90, 90, 90, 0.2), 0 3px 3px -1px rgba(90, 90, 90, 0.2);
+        box-sizing: content-box;
+    }
+
+    .genresContainer span{
+        font-size: .75rem;
+        margin: .25rem;
+        padding: .1rem .5rem;
+        background-color:#ECF3FD;
+        color: #176ADE;
+        border-radius:.25rem;
+    }
+
+    .content {
+        padding: 1rem;
+        min-height: 8rem;
+        border-radius: .8rem .8rem .5rem .5rem;
+        background-color: #ffffff;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        box-sizing: border-box;
+        z-index: 4;
+        box-shadow: 0 3px 3px -1px rgba(90, 90, 90, 0.2), 0 -12px 20px -10px rgba(0, 0, 0, 0.2),
+        0 -1px 1px rgba(0,0,0,0.08),
+        0 -2px 2px rgba(0,0,0,0.08),
+        0 -4px 4px rgba(0,0,0,0.08),
+        0 -6px 8px rgba(0,0,0,0.08),
+        0 -8px 16px rgba(0,0,0,0.08);;
+
+    }
 }
