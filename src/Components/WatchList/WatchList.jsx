@@ -32,7 +32,7 @@ const WatchList = ({}) => {
                     id={index}
                     title={movie.title}
                     key={`${movie.id}-${index}`}
-                    image={movie.poster_path}
+                    imageURL={movie.poster_path}
                     genres={movie.genre_ids}
                     date={movie.release_date}
                     rate={movie.vote_average}

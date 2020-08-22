@@ -79,49 +79,73 @@ const MovieCard = (
            className={styles.poster}
        >
          <img className={classes(styles.posterImage, "lazy")} data-src={`http://image.tmdb.org/t/p/original/${image}` } src={placeholder} />
-         <div className={styles.rateContainer}>
-           <div>
-           <Star/>
-           <p>{rate}</p>
-           </div>
+         <div className={styles.rate}>
+           <p>{getYear()}</p>
+
          </div>
        </div>
-        <div className={styles.content}>
-          <h3>{title}</h3>
-          <div className={styles.yearContainer}>
-
-            <p>{getYear()}</p>
-            <div className={styles.buttonContainer}>
-              {!home ?
+        <div className={styles.yearContainer}>
+          <div className={styles.year}>
+          <span>
+           ❤️
+             </span>
+            <p>{rate}</p>
+          </div>
+          {!home ?
+              <button
+                  className={styles.removeButton}
+                  onClick={() => {
+                    removeFromWatchList()
+                  }}
+              >
+                {copies.remove}
+              </button>:
+              status ?
+                  <p>{copies.in_watch_list }</p>:
                   <button
-                      className={styles.removeButton}
-                      onClick={() => {
-                        removeFromWatchList()
+                      className={styles.addButton}
+                      onClick={()=>{
+                        addToWatchList()
                       }}
                   >
-                    {copies.remove}
-                  </button>:
-                     status ?
-                        <p>{copies.in_watch_list }</p>:
-                        <button
-                            className={styles.addButton}
-                            onClick={()=>{
-                              addToWatchList()
-                            }}
-                        >
-                          { copies.add_watch_list}
-                        </button>
-                  }
+                    { copies.add_watch_list}
+                  </button>
+          }
+        </div>
+        <div className={styles.content}>
+          <h3>{title}</h3>
 
-
-            </div>
-          </div>
             <div className={styles.genresContainer}>
               {getGenres().map(genre =>
                 <span key={genre.id}>{genre.name} </span>
             )}</div>
-
         </div>
+        {/*<div className={styles.buttonContainer}>
+          <div className={styles.year}>
+            🎞
+            <p>{getYear()}</p>
+          </div>
+          {!home ?
+              <button
+                  className={styles.removeButton}
+                  onClick={() => {
+                    removeFromWatchList()
+                  }}
+              >
+                {copies.remove}
+              </button>:
+              status ?
+                  <p>{copies.in_watch_list }</p>:
+                  <button
+                      className={styles.addButton}
+                      onClick={()=>{
+                        addToWatchList()
+                      }}
+                  >
+                    { copies.add_watch_list}
+                  </button>
+          }
+        </div>*/}
       </div>
   );
 };
