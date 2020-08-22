@@ -1,26 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;900&display=swap');
+
 .mainContainer{
     color: #212529;
     text-decoration: none;
-    background-color: #f9f9fd;
+    background-color: #ffffff;
     border: 1px solid #e9ecef;
     border-radius: .5rem;
     transition: transform .15s ease,box-shadow .15s ease,-webkit-transform .15s ease,-webkit-box-shadow .15s ease;
-    width: 20rem;
-    height: 25rem;
+    width: 90%;
+    box-sizing: border-box;
+    height: 40rem;
     position: relative;
-    font-family: 'Source Sans Pro', sans-serif;
-    margin: 1rem;
+    font-family: 'Nunito', sans-serif;
+    margin: 1rem 0;
 }
 
-.mainContainer:hover{
-    transform: scale(1.03) translateY(-3px);
-    box-shadow: 0 1px 2px rgba(0,0,0,.03),0 2px 4px rgba(0,0,0,.03),0 4px 8px rgba(0,0,0,.03),0 8px 16px rgba(0,0,0,.03),0 16px 32px rgba(0,0,0,.03),0 32px 64px rgba(0,0,0,.03);
-}
 
 .poster{
     width: 100%;
-    height: 60%;
-    border-radius: .5rem .5rem 0 0;
+    height: 80%;
+    border-radius: .5rem  .5rem 0 0;
     background-size: cover;
     position: relative;
     overflow: hidden;
@@ -40,6 +39,21 @@
 
 .content {
     padding: 1rem;
+    min-height: 9rem;
+    border-radius: .8rem .8rem .5rem .5rem;
+    background-color: #ffffff;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 4;
+    box-shadow: 0 3px 3px -1px rgba(90, 90, 90, 0.2), 0 -12px 20px -10px rgba(0, 0, 0, 0.2),
+    0 -1px 1px rgba(0,0,0,0.08),
+    0 -2px 2px rgba(0,0,0,0.08),
+    0 -4px 4px rgba(0,0,0,0.08),
+    0 -6px 8px rgba(0,0,0,0.08),
+    0 -8px 16px rgba(0,0,0,0.08);;
+
 }
 
 .content h3{
@@ -49,7 +63,8 @@
     max-width: 100%;
     overflow: hidden;
     white-space: nowrap;
-    margin: 0 0 .75rem;
+    margin: 0 0 .5rem;
+    font-family: 'Nunito', sans-serif;
 }
 
 .yearContainer{
@@ -57,49 +72,71 @@
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
+    color: #ffffff;
+    font-weight: 700;
 }
 
-.yearContainer p {
-    font-size: 1.2rem;
+.year p {
+    font-size: 1.5rem;
     font-weight: 700;
     margin: 0 .5rem;
+    letter-spacing: 0.1em;
+
 }
 
-.yearContainer div {
-    height: fit-content;
+.yearContainer{
+    position: absolute;
+    right: 0;
+    bottom: 8rem;
+    background: rgb(62,163,231);
+    background: linear-gradient(285deg, rgba(62,163,231,1) 0%, rgba(15,83,185,1) 100%);
+    height: 5rem;
+    border-radius: .8rem .8rem 0 0;
+    z-index: 2;
+    width: 100%;
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-}
-.yearContainer span {
-    font-size: .75rem;
-    margin: .25rem;
-    padding: .25rem .5rem;
-    background-color: #D2DFFB;
-    color: #657BAB;
-    border-radius:1rem;
-}
+    justify-content: space-between;
+    align-items: center;
+    padding:0 .5rem .5rem;
+    box-sizing: border-box;
+    box-shadow: 0 -2px 1px rgba(0,0,0,0.09),
+    0 -1px 1px rgba(0,0,0,0.11),
+    0 -2px 2px rgba(0,0,0,0.11),
+    0 -4px 4px rgba(0,0,0,0.11),
+    0 -6px 8px rgba(0,0,0,0.11),
+    0 -8px 16px rgba(0,0,0,0.11);
 
-
-.rateContainer{
-    position: absolute;
-    bottom: 0;
-    background: rgb(9,10,11);
-    background: linear-gradient(0deg, rgba(9,10,11,1) 0%, rgba(238,238,238,0) 100%);
-    width:100%;
-    height: 50%;
 }
 
-.rateContainer div {
+ .rate {
     display: flex;
     flex-direction: row;
     align-items: center;
     position: absolute;
     left: 100%;
-    bottom: 0;
-    margin: 0;
+    top: 0;
+    margin: .5rem 0;
     transform: translate(-110%,0);
+     font-size: 1rem;
+     background-color: rgba(0,0,0,0.5);
+     border-radius: 1rem;
+     padding: .25rem .5rem;
+}
+
+ .rate p{
+     color: white;
+     margin:0  .25rem;
+ }
+
+ .rate span{
+     font-size: 0.750rem;
+ }
+
+.year{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .rateContainer svg{
@@ -124,29 +161,101 @@
     flex-wrap: wrap;
     justify-content: flex-start;
     margin-top: .5rem;
+    max-height: 5rem;
+    overflow: scroll;
 }
 
 .genresContainer span{
-    font-size: .75rem;
+    font-size: 1rem;
     margin: .25rem;
-    padding: .2rem .5rem;
-    background-color:#D2DFFB;
-    color: #657BAB;
-    border-radius:1rem;
+    padding: .1rem .5rem;
+    background-color:#ECF3FD;
+    color: #176ADE;
+    border-radius:.25rem;
 }
 
-
+.buttonContainer{
+    position: absolute;
+    bottom: 0;
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 90%;
+    z-index: 5;
+}
 .addButton{
-    background-color: transparent;
-    color: #015DE1;
-    border: none;
+    background-color: white;
+    color: #212529;
+    padding: .25rem .5rem;
+    border:none;
     font-size: 1rem;
+    border-radius: .25rem;
+    box-shadow: 0 3px 3px -1px rgba(90, 90, 90, 0.2), 0 3px 3px -1px rgba(90, 90, 90, 0.2);
+    box-sizing: content-box;
+    font-family: 'Nunito', sans-serif;
 }
 
 .addButton:hover {
-    border-bottom: solid 1px #015DE1;
-    transition: all .15s ease,
+    transition: all .15s ease;
+    box-shadow: 0 2px 1px rgba(0,0,0,0.09),
+    0 1px 1px rgba(0,0,0,0.11),
+    0 2px 2px rgba(0,0,0,0.11),
+    0 4px 4px rgba(0,0,0,0.11),
+    0 6px 8px rgba(0,0,0,0.11),
+    0 8px 16px rgba(0,0,0,0.11);
 }
 .removeButton{
+    background-color: white;
+    color: #D72A1D;
+    padding: .25rem .5rem;
+    border:solid 1px #D72A1D;
+    font-size: 1rem;
+    border-radius: .25rem;
+    box-shadow: 0 3px 3px -1px rgba(90, 90, 90, 0.2), 0 3px 3px -1px rgba(90, 90, 90, 0.2);
+    box-sizing: content-box;
+    font-family: 'Nunito', sans-serif;
+}
 
+.removeButton:hover{
+    transition: all .15s ease;
+    color: white;
+    background-color: #D72A1D;
+    box-shadow: 0 2px 1px rgba(0,0,0,0.09),
+    0 1px 1px rgba(0,0,0,0.11),
+    0 2px 2px rgba(0,0,0,0.11),
+    0 4px 4px rgba(0,0,0,0.11),
+    0 6px 8px rgba(0,0,0,0.11),
+    0 8px 16px rgba(0,0,0,0.11);
+}
+
+
+@media (min-width: 768px) {
+    .mainContainer{
+        width: 20rem;
+        height: 30rem;
+        position: relative;
+        margin: 1rem;
+    }
+
+    .yearContainer{
+        bottom: 7.2rem;
+        height: 3.5rem;
+    }
+
+    .addButton{
+        font-size: .75rem;
+    }
+
+    .genresContainer span{
+        font-size: .75rem;
+    }
+
+    .content {
+        min-height: 8rem;
+    }
+
+    .removeButton{
+        font-size: .75rem;
+    }
 }

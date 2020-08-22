@@ -1,26 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;900&display=swap');
+
 .navBarContainer{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-    font-family: 'Source Sans Pro', sans-serif;
-    border-bottom: solid 2px #819ACF;
+    justify-content: space-between;
+    font-family: 'Nunito', sans-serif;
     padding: .5rem;
     margin-bottom: 1rem;
     position: fixed;
-    z-index: 2;
+    z-index: 6;
     width: 100%;
     background-color: white;
+    box-sizing: border-box;
     top: 0;
+    left: 0;
+    box-shadow: 0 2px 1px rgba(0,0,0,0.01),
+    0 1px 1px rgba(0,0,0,0.11),
+    0 2px 2px rgba(0,0,0,0.11),
+    0 4px 4px rgba(0,0,0,0.11),
+    0 6px 8px rgba(0,0,0,0.11),
+    0 8px 16px rgba(0,0,0,0.11);
 }
 
 .navBarContainer a{
     text-decoration: none;
-    font-size: 1.5rem;
-    margin: 0 1rem;
-    color:#819ACF;
+    font-size: 2rem;
+    margin: 1rem;
+    color:#5da0fe;
 }
 
 
 .navBarContainer a:visited{
-    color:#819ACF;
+    color:#5da0fe;
+}
+
+
+.navBarContainer h3{
+    margin: 0 1rem;
+    font-size: 2.5rem;
+    color: #015DE1;
+}
+
+
+.burgerContainer{
+    background-color: transparent;
+    border: none;
+}
+.burgerContainer svg {
+    height: 2rem;
+}
+
+
+.linksContainer{
+    display: none;
+    flex-direction: column;
+}
+
+.mobileContainer{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.linksOpen{
+    display: flex;
+    width: 100%;
+    height: calc(100vh - 2rem);
+}
+
+.burgerContainer svg{
+    fill: #015DE1;
+}
+
+@media (min-width: 768px){
+
+    .navBarContainer{
+        flex-direction: row;
+    }
+    .burgerContainer{
+        display: none;
+    }
+
+    .linksContainer{
+        display: block;
+        width: 25%;
+    }
+    .navBarContainer a{
+        font-size: 1.5rem;
+        margin: 0 1rem;
+    }
+
+    .navBarContainer h3{
+        font-size: 1.5rem;
+    }
+
 }
