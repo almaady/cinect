@@ -4,6 +4,8 @@ const useObserver = options => {
   const [elements, setElements] = useState([]);
   const [entries, setEntries] = useState([]);
 
+
+  // eslint-disable-next-line no-undef
   const observer = useRef(new IntersectionObserver(observedEntries => {
     setEntries(observedEntries);
   }, options));

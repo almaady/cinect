@@ -13,7 +13,7 @@ const {
 } = publicRuntimeConfig;
 
 
-const Listing = ({home}) => {
+const Listing = () => {
   const[movieList, setMovieList] = useState([]);
 
 
@@ -34,9 +34,10 @@ const Listing = ({home}) => {
 
 
   const  getInitialMovies = async page => {
-    const  savedMovieList = await localStorage.getItem("movieList") ;
+    const  savedMovieList = await  JSON.parse(localStorage.getItem("movieList")) ;
     console.log(savedMovieList);
-    const  actualPage = await JSON.parse(localStorage.getItem("currentPage")) || [1];
+    const  actualPage = await JSON.parse(localStorage.getItem("currentPage")) ;
+    console.log(actualPage)
     if(savedMovieList){
       setMovieList(savedMovieList)
     }else{
@@ -49,9 +50,11 @@ const Listing = ({home}) => {
     try {
       const response = await movieApiInstance().get(TOP_RATED(page,  MOVIE_API_KEY));
       setIsLoading(false);
+      console.log("response", response)
       const newList = movieList.concat(response.data.results);
       setMovieList(newList);
-      localStorage.setItem("movieList", JSON.parse(newList))
+      localStorage.setItem("actualPage", page)
+      localStorage.setItem("movieList", JSON.stringify(newList))
     }
     catch (e) {
       console.warn(e)
@@ -69,7 +72,6 @@ const Listing = ({home}) => {
         {movieList.map((movie, index)=>{
             return(
             <MovieCard
-                id={index}
                 title={movie.title}
                 key={`${movie.id}-${index}`}
                 imageURL={movie.poster_path}
@@ -83,7 +85,7 @@ const Listing = ({home}) => {
                   localStorage.setItem("watchList", JSON.stringify(newList))
                 }}
                 watchList={watchList}
-                home={home}
+                home
             />
         )})}
       </div>

@@ -3,7 +3,6 @@ import {number, string, func, arrayOf, bool} from "prop-types";
 import styles from "./MovieCard.module.css"
 import copies from "./copies";
 import {genresIDs} from "../../utils/constants";
-import Star from  "./Assets/Star"
 import useObserver from "../../utils/useObserver";
 import {classes} from "../../utils/format";
 import placeholder from "./Assets/placeholder.png"
@@ -21,8 +20,6 @@ const MovieCard = (
        addToWatchList,
        watchList,
        removeFromWatchList,
-        id,
-        ref
     }
 
        ) => {
@@ -74,7 +71,7 @@ const MovieCard = (
 
 
   return (
-      <div className={styles.mainContainer} id={id}  ref={ref}>
+      <div className={styles.mainContainer}>
        <div
            className={styles.poster}
        >
@@ -93,6 +90,7 @@ const MovieCard = (
           </div>
           {!home ?
               <button
+                  id="removeButton"
                   className={styles.removeButton}
                   onClick={() => {
                     removeFromWatchList()
@@ -101,8 +99,9 @@ const MovieCard = (
                 {copies.remove}
               </button>:
               status ?
-                  <p>{copies.in_watch_list }</p>:
+                  <p id="inWatchList">{copies.in_watch_list }</p>:
                   <button
+                      id="addButton"
                       className={styles.addButton}
                       onClick={()=>{
                         addToWatchList()
@@ -115,37 +114,11 @@ const MovieCard = (
         <div className={styles.content}>
           <h3>{title}</h3>
 
-            <div className={styles.genresContainer}>
+            <div className={styles.genresContainer} id="genresContainer">
               {getGenres().map(genre =>
-                <span key={genre.id}>{genre.name} </span>
+                <span key={genre.id}>{genre.name}</span>
             )}</div>
         </div>
-        {/*<div className={styles.buttonContainer}>
-          <div className={styles.year}>
-            🎞
-            <p>{getYear()}</p>
-          </div>
-          {!home ?
-              <button
-                  className={styles.removeButton}
-                  onClick={() => {
-                    removeFromWatchList()
-                  }}
-              >
-                {copies.remove}
-              </button>:
-              status ?
-                  <p>{copies.in_watch_list }</p>:
-                  <button
-                      className={styles.addButton}
-                      onClick={()=>{
-                        addToWatchList()
-                      }}
-                  >
-                    { copies.add_watch_list}
-                  </button>
-          }
-        </div>*/}
       </div>
   );
 };

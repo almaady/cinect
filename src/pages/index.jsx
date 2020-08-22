@@ -8,10 +8,10 @@ import NavBar from "../Components/NavBar/NavBar";
 const IndexPage = ({currentUrl}) => {
 
   return (
-      <div>
+      <>
         <NavBar/>
         <Listing home/>
-      </div>
+      </>
   );
 };
 IndexPage.propTypes = {
