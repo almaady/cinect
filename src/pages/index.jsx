@@ -10,7 +10,7 @@ const IndexPage = ({currentUrl}) => {
   return (
       <>
         <NavBar/>
-        <Listing home/>
+        <Listing/>
       </>
   );
 };

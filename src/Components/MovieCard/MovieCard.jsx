@@ -71,7 +71,7 @@ const MovieCard = (
 
 
   return (
-      <div className={styles.mainContainer}>
+      <a className={styles.mainContainer} href={`/detail/${movieId}`}>
        <div
            className={styles.poster}
        >
@@ -119,7 +119,7 @@ const MovieCard = (
                 <span key={genre.id}>{genre.name}</span>
             )}</div>
         </div>
-      </div>
+      </a>
   );
 };
 MovieCard.propTypes = {
